@@ -1,0 +1,16 @@
+    {
+      "restaurant": {
+        "id": "19532191",
+        "name": "Choupati Family Restaurant",
+        "location": {
+          "address": "Sonelal Dhala, Malgodam Road, Samastipur Locality, Samastipur",
+          "locality": "Samastipur Locality",
+          "city": "Samastipur",
+          "latitude": "25.8520300000",
+          "longitude": "85.7980100000",
+          "zipcode": "848101"
+        },
+        "cuisines": "Fast Food, North Indian",
+        "average_cost_for_two": 250
+      }
+    }
