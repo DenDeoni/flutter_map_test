@@ -52,6 +52,7 @@ class MyApp extends StatelessWidget {
       title: LocaleKeys.title.tr(),
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
+      debugShowCheckedModeBanner: false,
       locale: EasyLocalization.of(context)!.supportedLocales.contains(Intl.systemLocale.toLocale())
           ? Locale(Intl.systemLocale)
           : Locale('en', 'US'),

@@ -10,7 +10,7 @@ class ObjectName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 12.0, bottom: 5),
+      padding: const EdgeInsets.only(bottom: 5),
       child: Text(
         title,
         maxLines: 2,

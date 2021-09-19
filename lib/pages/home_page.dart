@@ -1,4 +1,3 @@
-import 'package:dactyl_test_app/bloc/nav_bar/nav_bar_bloc.dart';
 import 'package:dactyl_test_app/bloc/restaurants/restaurants_bloc.dart';
 import 'package:dactyl_test_app/bloc/restaurants/restaurants_event.dart';
 import 'package:dactyl_test_app/bloc/restaurants/restaurants_state.dart';
@@ -24,6 +23,7 @@ class HomePage extends StatelessWidget {
         backgroundColor: Color(0xFFF5F5F5),
         appBar: AppBar(
           centerTitle: true,
+          automaticallyImplyLeading: false,
           title: Text(
             LocaleKeys.title.tr(),
             style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
@@ -59,11 +59,13 @@ class HomePage extends StatelessWidget {
     return Scrollbar(
       child: GridView.count(
         crossAxisCount: 1,
-        childAspectRatio: 0.9,
-        mainAxisSpacing: 10.0,
-        crossAxisSpacing: 20.0,
-        padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-        children: data.map((item) => ListItem(item, item.restaurant.id)).toList(growable: false),
+        childAspectRatio: 3.9,
+        mainAxisSpacing: 5.0,
+        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+        children: data
+            .map((item) => ListItem(item, item.restaurant.id, item.restaurant.name,
+                item.restaurant.location.address, item.restaurant.averageCostForTwo))
+            .toList(growable: false),
       ),
     );
   }

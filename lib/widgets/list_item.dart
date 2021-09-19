@@ -12,12 +12,15 @@ class ListItem extends StatelessWidget {
   static const leftPadding = 14.0;
   final RestaurantModel restaurantModel;
   final String id;
+  final String name;
+  final String address;
+  final int cost;
 
-  ListItem(this.restaurantModel, this.id);
+  ListItem(this.restaurantModel, this.id, this.name, this.address, this.cost);
 
   Future _openDetails(BuildContext context) async {
-    await Navigator.of(context)
-        .pushNamed(RESTAURANT_DETAIL, arguments: DetailsRouteParameters(restaurantModel, id));
+    await Navigator.of(context).pushNamed(RESTAURANT_DETAIL,
+        arguments: DetailsRouteParameters(restaurantModel, id, name, address, cost));
   }
 
   @override
@@ -30,8 +33,8 @@ class ListItem extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 0,
-              blurRadius: 0,
+              spreadRadius: 0.5,
+              blurRadius: 3,
               offset: Offset(0, 0), // changes position of shadow
             ),
           ],
@@ -44,10 +47,10 @@ class ListItem extends StatelessWidget {
             Expanded(
               // Block under photo
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: leftPadding),
+                padding: const EdgeInsets.only(left: 15),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     ObjectName(restaurantModel.restaurant.name),
                     ObjectDescription(restaurantModel.restaurant.cuisines),

@@ -8,16 +8,14 @@ class RestaurantsDataProvider {
 
   late List<RestaurantModel> _loadedData;
   late List<RestaurantModel> restaurants;
-  //late Response response;
+
   //var dio = Dio();
 
   Future<List<RestaurantModel>> _loadDataFromNetwork() async {
-    var response = await http.get(Uri.parse(_url)); //await dio.get
-    // (_url);
-
-    //print('response.data["restaurants"]: ${response["restaurants"]}');
-    var dataParsed = json.decode(response.body)["restaurants"]; //json.decode(response
-    // .data["restaurants"],);
+    var response = await http.get(Uri.parse(_url));
+    //await dio.get(_url);
+    var dataParsed = json.decode(response.body)["restaurants"];
+    //json.decode(response.data["restaurants"],);
     restaurants = await dataParsed
         .map<RestaurantModel>(
           (e) => RestaurantModel.fromJson(e),
