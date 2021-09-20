@@ -63,7 +63,7 @@ class _GeoMapState extends State<GeoMap> {
     );
   }
 
-  Widget _flutterMap(restaurantModel) => FlutterMap(
+  Widget _flutterMap(restaurantsList) => FlutterMap(
         mapController: mapController,
         options: MapOptions(
           center: LatLng(latitudeData + 0.01, longitudeData + 0.001),
@@ -79,7 +79,7 @@ class _GeoMapState extends State<GeoMap> {
                 rotate: true,
                 width: 500,
                 height: 100,
-                builder: (ctx) => YourPlace(context, "Your place", restaurantModel[0]),
+                builder: (ctx) => YourPlace(context, "Your place", restaurantsList[0]),
                 point: LatLng(latitudeData, longitudeData),
               ),
               //_buildPoints(state.restaurantsList)
