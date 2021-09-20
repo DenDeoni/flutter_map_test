@@ -1,7 +1,6 @@
 import 'package:dactyl_test_app/bloc/restaurants/restaurants_state.dart';
 import 'package:dactyl_test_app/bloc/restaurants/restaurants_bloc.dart';
 import 'package:dactyl_test_app/models/restaurant_model.dart';
-import 'package:dactyl_test_app/widgets/bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
