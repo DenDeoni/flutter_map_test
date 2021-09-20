@@ -11,22 +11,17 @@ import 'object_name.dart';
 class ListItem extends StatelessWidget {
   static const leftPadding = 14.0;
   final RestaurantModel restaurantModel;
-  final String id;
-  final String name;
-  final String address;
-  final int cost;
 
-  ListItem(this.restaurantModel, this.id, this.name, this.address, this.cost);
+  ListItem(this.restaurantModel);
 
   Future _openDetails(BuildContext context) async {
-    await Navigator.of(context).pushNamed(RESTAURANT_DETAIL,
-        arguments: DetailsRouteParameters(restaurantModel, id, name, address, cost));
+    await Navigator.of(context)
+        .pushNamed(RESTAURANT_DETAIL, arguments: DetailsRouteParameters(restaurantModel));
   }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      // Open detail window
       onTap: () => _openDetails(context),
       child: Container(
         decoration: BoxDecoration(
@@ -39,13 +34,11 @@ class ListItem extends StatelessWidget {
             ),
           ],
           color: Colors.white,
-          //border: Border.all(color: AppColors.border),
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
         ),
         child: Column(
           children: [
             Expanded(
-              // Block under photo
               child: Padding(
                 padding: const EdgeInsets.only(left: 15),
                 child: Column(

@@ -14,8 +14,8 @@ class RestaurantsBloc extends Bloc<RestaurantsEvent, MainState> {
     _getLocationData();
   }
 
-  late double currentLatitude;
-  late double currentLongitude;
+  late double currentLat;
+  late double currentLon;
   late List<RestaurantModel> restaurants;
   late var index;
 
@@ -29,7 +29,7 @@ class RestaurantsBloc extends Bloc<RestaurantsEvent, MainState> {
   }
 
   Future _loadData() async {
-    final data = await restaurantsDataProvider.getData(currentLatitude, currentLongitude);
+    final data = await restaurantsDataProvider.getData(currentLat, currentLon);
     add(DataLoadedEvent(
       data,
     ));
@@ -38,9 +38,9 @@ class RestaurantsBloc extends Bloc<RestaurantsEvent, MainState> {
 
   Future<List<double>> _getLocationData() async {
     var locData = await GetLocation().getLocation();
-    currentLatitude = locData.latitude;
-    currentLongitude = locData.longitude;
-    List<double> location = [currentLatitude, currentLongitude];
+    currentLat = locData.latitude;
+    currentLon = locData.longitude;
+    List<double> location = [currentLat, currentLon];
     await _loadData();
     return location;
   }

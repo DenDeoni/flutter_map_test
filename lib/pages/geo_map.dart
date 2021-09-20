@@ -1,5 +1,8 @@
+import 'package:dactyl_test_app/bloc/restaurants/restaurants_state.dart';
+import 'package:dactyl_test_app/bloc/restaurants/restaurants_bloc.dart';
 import 'package:dactyl_test_app/widgets/bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:dactyl_test_app/utils/consts.dart';
 import 'package:dactyl_test_app/utils/get_location.dart';
@@ -37,13 +40,6 @@ class _GeoMapState extends State<GeoMap> {
     });
   }
 
-  void _getCentralPointCoordinates() {
-    setState(() {
-      latitudeCentral = mapController.center.latitude;
-      longitudeCentral = mapController.center.longitude;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,9 +48,14 @@ class _GeoMapState extends State<GeoMap> {
         child: Center(
           child: Stack(
             children: [
-              Container(
-                child: _currentPosition != null ? _flutterMap() : _progress(),
-              ),
+              BlocBuilder<RestaurantsBloc, MainState>(
+                builder: (context, state) {
+                  return Container(
+                    child:
+                        _currentPosition != null ? _flutterMap(state.restaurantsList) : _progress(),
+                  );
+                },
+              )
             ],
           ),
         ),
@@ -62,11 +63,11 @@ class _GeoMapState extends State<GeoMap> {
     );
   }
 
-  Widget _flutterMap() => FlutterMap(
+  Widget _flutterMap(restaurantModel) => FlutterMap(
         mapController: mapController,
         options: MapOptions(
           center: LatLng(latitudeData + 0.01, longitudeData + 0.001),
-          zoom: 13.0,
+          zoom: 2.0,
         ),
         layers: [
           TileLayerOptions(
@@ -75,15 +76,19 @@ class _GeoMapState extends State<GeoMap> {
           MarkerLayerOptions(
             markers: [
               Marker(
+                rotate: true,
                 width: 500,
                 height: 100,
-                builder: (ctx) => place(context, "Your place"),
+                builder: (ctx) => YourPlace(context, "Your place", restaurantModel[0]),
                 point: LatLng(latitudeData, longitudeData),
               ),
+              //_buildPoints(state.restaurantsList)
             ],
           ),
         ],
       );
+
+  //Widget _buildPoints(List<RestaurantModel> data) => Marker(point: point, builder: builder)
 
   Widget _progress() => Center(
         child: CircularProgressIndicator(

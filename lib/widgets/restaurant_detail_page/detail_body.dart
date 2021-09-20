@@ -14,15 +14,15 @@ import 'package:flutter_svg/svg.dart';
 
 class DetailBody extends StatelessWidget {
   RestaurantModel restaurantModel;
-  String id;
 
-  DetailBody(this.restaurantModel, this.id);
+  DetailBody(
+    this.restaurantModel,
+  );
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<RestDetailBloc, MainState>(
       builder: (context, state) {
-        this.id = state.restaurantDetail.id;
         return Padding(
           padding: const EdgeInsets.all(15.0),
           child: Column(

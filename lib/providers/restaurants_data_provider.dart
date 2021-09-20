@@ -11,8 +11,7 @@ class RestaurantsDataProvider {
 
   //var dio = Dio();
 
-  Future<List<RestaurantModel>> _loadDataFromNetwork(
-      double currentLatitude, double currentLongitude) async {
+  Future<List<RestaurantModel>> _loadDataFromNetwork(double currentLat, double currentLon) async {
     var response = await http.get(Uri.parse(_url));
     //await dio.get(_url);
     var dataParsed = json.decode(response.body)["restaurants"];
@@ -25,10 +24,10 @@ class RestaurantsDataProvider {
     restaurants.sort((a, b) => (Geolocator.distanceBetween(
             double.parse(a.restaurant.location.latitude),
             double.parse(a.restaurant.location.longitude),
-            currentLatitude,
-            currentLongitude)
+            currentLat,
+            currentLon)
         .compareTo(Geolocator.distanceBetween(double.parse(b.restaurant.location.latitude),
-            double.parse(b.restaurant.location.longitude), currentLatitude, currentLongitude))));
+            double.parse(b.restaurant.location.longitude), currentLat, currentLon))));
     return restaurants;
   }
 

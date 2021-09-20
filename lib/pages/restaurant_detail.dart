@@ -6,9 +6,8 @@ import 'package:dactyl_test_app/widgets/restaurant_detail_page/detail_body.dart'
 
 class RestaurantDetail extends StatelessWidget {
   final RestaurantModel restaurantModel;
-  String id;
 
-  RestaurantDetail(this.restaurantModel, this.id);
+  RestaurantDetail(this.restaurantModel);
 
   static const routeName = RESTAURANT_DETAIL;
 
@@ -16,7 +15,7 @@ class RestaurantDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: DetailBody(restaurantModel, id),
+        child: DetailBody(restaurantModel),
       ),
     );
   }

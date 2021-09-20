@@ -1,5 +1,4 @@
 import 'package:dactyl_test_app/bloc/restaurants/restaurants_bloc.dart';
-import 'package:dactyl_test_app/bloc/restaurants/restaurants_event.dart';
 import 'package:dactyl_test_app/bloc/restaurants/restaurants_state.dart';
 import 'package:dactyl_test_app/generated/locale_keys.g.dart';
 import 'package:dactyl_test_app/models/index.dart';
@@ -62,10 +61,7 @@ class HomePage extends StatelessWidget {
         childAspectRatio: 3.9,
         mainAxisSpacing: 5.0,
         padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
-        children: data
-            .map((item) => ListItem(item, item.restaurant.id, item.restaurant.name,
-                item.restaurant.location.address, item.restaurant.averageCostForTwo))
-            .toList(growable: false),
+        children: data.map((item) => ListItem(item)).toList(growable: false),
       ),
     );
   }

@@ -77,7 +77,7 @@ class MyApp extends StatelessWidget {
             final DetailsRouteParameters args = settings.arguments as DetailsRouteParameters;
             return MaterialPageRoute(
               builder: (context) {
-                return RestaurantDetail(args.restaurantModel, args.id);
+                return RestaurantDetail(args.restaurantModel);
               },
             );
           case GeoMap.routeName:
