@@ -12,6 +12,7 @@ class BottomNavBar extends StatelessWidget {
 
   Widget bottomBar(context) {
     return BottomNavigationBar(
+      selectedItemColor: Colors.blueAccent,
       currentIndex: _currentIndex,
       onTap: (value) {
         final routes = [HOME, GEO_MAP];

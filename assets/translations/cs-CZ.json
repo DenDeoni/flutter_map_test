@@ -3,5 +3,6 @@
   "list": "Tabulka",
   "map": "Mapa",
   "average_cost": "Cenový rozsah: ",
-  "address": "Adresa: "
+  "address": "Adresa: ",
+  "your_location": "Vaše poloha"
 }

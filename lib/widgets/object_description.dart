@@ -13,8 +13,8 @@ class ObjectDescription extends StatelessWidget {
       softWrap: true,
       overflow: TextOverflow.ellipsis,
       style: TextStyle(
-        fontSize: 12.0,
-        color: Colors.black45,
+        fontSize: 18.0,
+        color: Colors.black54,
         fontWeight: FontWeight.normal,
       ),
     );

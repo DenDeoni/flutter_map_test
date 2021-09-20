@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:dactyl_test_app/utils/consts.dart';
 import 'package:dactyl_test_app/utils/get_location.dart';
-import 'package:dactyl_test_app/widgets/place.dart';
+import 'package:dactyl_test_app/widgets/locators.dart';
 import 'package:latlong2/latlong.dart';
 import 'dart:ui';
 
@@ -44,7 +44,6 @@ class _GeoMapState extends State<GeoMap> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavBar(),
       body: SafeArea(
         child: Center(
           child: Stack(
@@ -75,17 +74,7 @@ class _GeoMapState extends State<GeoMap> {
               urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
               subdomains: ['a', 'b', 'c']),
           MarkerLayerOptions(
-            markers: _buildMarkers(context,
-                restaurantsList), /*[
-              Marker(
-                rotate: true,
-                width: 500,
-                height: 100,
-                builder: (ctx) => YourPlace(context, "Your place", restaurantsList[0]),
-                point: LatLng(latitudeData, longitudeData),
-              ),
-              _buildMarkers(context, restaurantsList),
-            ],*/
+            markers: _buildMarkers(context, restaurantsList),
           ),
         ],
       );
@@ -117,7 +106,7 @@ class _GeoMapState extends State<GeoMap> {
         rotate: true,
         width: 500,
         height: 100,
-        builder: (ctx) => locator(context, "Your place", restaurantsList[0]),
+        builder: (ctx) => yourPlace(context),
         point: LatLng(latitudeData, longitudeData),
       ),
     );

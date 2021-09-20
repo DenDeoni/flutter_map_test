@@ -6,4 +6,5 @@ abstract class LocaleKeys {
   static const map = 'map';
   static const average_cost = 'average_cost';
   static const address = 'address';
+  static const your_location = 'your_location';
 }

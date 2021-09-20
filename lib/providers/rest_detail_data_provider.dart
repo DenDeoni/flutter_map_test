@@ -14,7 +14,6 @@ class RestDetailDataProvider {
     );
     var dataParsed = json.decode(response.body);
     _restDetail = RestaurantModel.fromJson(dataParsed);
-    print('data: $_restDetail');
     return _restDetail;
   }
 

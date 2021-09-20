@@ -3,5 +3,6 @@
   "list": "List",
   "map": "Map",
   "average_cost": "Average cost: ",
-  "address": "Address: "
+  "address": "Address: ",
+  "your_location": "Your Location"
 }

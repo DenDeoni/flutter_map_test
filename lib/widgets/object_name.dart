@@ -18,7 +18,7 @@ class ObjectName extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
         textAlign: TextAlign.start,
         style: TextStyle(
-          fontSize: 16.0,
+          fontSize: 18.0,
           fontWeight: FontWeight.bold,
         ),
       ),
