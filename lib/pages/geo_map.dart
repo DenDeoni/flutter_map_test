@@ -1,5 +1,6 @@
 import 'package:dactyl_test_app/bloc/restaurants/restaurants_state.dart';
 import 'package:dactyl_test_app/bloc/restaurants/restaurants_bloc.dart';
+import 'package:dactyl_test_app/models/restaurant_model.dart';
 import 'package:dactyl_test_app/widgets/bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -74,7 +75,8 @@ class _GeoMapState extends State<GeoMap> {
               urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
               subdomains: ['a', 'b', 'c']),
           MarkerLayerOptions(
-            markers: [
+            markers: _buildMarkers(context,
+                restaurantsList), /*[
               Marker(
                 rotate: true,
                 width: 500,
@@ -82,17 +84,43 @@ class _GeoMapState extends State<GeoMap> {
                 builder: (ctx) => YourPlace(context, "Your place", restaurantsList[0]),
                 point: LatLng(latitudeData, longitudeData),
               ),
-              //_buildPoints(state.restaurantsList)
-            ],
+              _buildMarkers(context, restaurantsList),
+            ],*/
           ),
         ],
       );
-
-  //Widget _buildPoints(List<RestaurantModel> data) => Marker(point: point, builder: builder)
 
   Widget _progress() => Center(
         child: CircularProgressIndicator(
           valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
         ),
       );
+
+  List<Marker> _buildMarkers(context, List<RestaurantModel> restaurantsList) {
+    var marker = <Marker>[];
+    restaurantsList.forEach(
+      (e) {
+        marker.add(
+          Marker(
+            rotate: true,
+            width: 500,
+            height: 100,
+            point: LatLng(double.parse(e.restaurant.location.latitude),
+                double.parse(e.restaurant.location.longitude)),
+            builder: (ctx) => locator(context, e.restaurant.name, e),
+          ),
+        );
+      },
+    );
+    marker.add(
+      Marker(
+        rotate: true,
+        width: 500,
+        height: 100,
+        builder: (ctx) => locator(context, "Your place", restaurantsList[0]),
+        point: LatLng(latitudeData, longitudeData),
+      ),
+    );
+    return marker;
+  }
 }
