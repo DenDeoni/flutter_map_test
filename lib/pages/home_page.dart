@@ -17,17 +17,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
   String latitudeData = "";
-
   String longitudeData = "";
 
   final List<Map<String, dynamic>> tabBarNav = [
-    {
-      "title": Text(
-        LocaleKeys.list.tr(),
-      ),
-      "icon": Icon(Icons.list)
-    },
     {"title": Text(LocaleKeys.map.tr()), "icon": Icon(Icons.map)},
+    {"title": Text(LocaleKeys.list.tr()), "icon": Icon(Icons.list)},
   ];
 
   late TabController _tabBarController;
@@ -80,8 +74,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         body: TabBarView(
           controller: _tabBarController,
           children: [
-            RestaurantsList(),
             GeoMap(),
+            RestaurantsList(),
           ],
         ),
       ),
